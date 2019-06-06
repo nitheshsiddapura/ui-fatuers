@@ -1,0 +1,20 @@
+  downloadFile(index) {
+    this.orderfulfillmentService.downloadFiles(this.availableFilesLatest[index]).subscribe((res) => {
+      this.down(res, this.availableFilesLatest[index])
+    })
+  }
+
+  downloadFileByName(index) {
+    this.orderfulfillmentService.downloadFiles(this.availableFiles[index]).subscribe((res) => {
+      this.down(res, this.availableFiles[index])
+    })
+  }
+
+  down(data, name) {
+    const blob = new Blob([data._body], { type: 'text/csv' });
+    FileSaver.saveAs(blob, name.slice(17))
+  }
+
+
+excel
+https://stackoverflow.com/questions/48802074/export-to-excel-on-angular-4

@@ -1,0 +1,2 @@
+js:image compression: https://zocada.com/compress-resize-images-javascript-browser/
+https://alligator.io/angular/resizing-images-in-browser-ng2-img-max/

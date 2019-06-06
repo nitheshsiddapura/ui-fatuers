@@ -1,0 +1,32 @@
+   if(!this.ClogoID){
+   setTimeout(() => {
+    var c =<HTMLCanvasElement> document.getElementById("myCanvas");
+    c.width=150
+    c.height=150
+    var ctx = c.getContext("2d");
+    var img =<HTMLCanvasElement> document.getElementById("preview");
+    console.log(img)
+    ctx.drawImage(img,0,0,150,150);
+    this.imgUrl = c.toDataURL()
+    console.log(c.toDataURL());
+ 
+ 
+    function dataURLtoFile(dataurl, filename) {
+     var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+     while(n--){
+         u8arr[n] = bstr.charCodeAt(n);
+     }
+     return new File([u8arr], filename, {type:mime});
+   }
+   
+   //Usage example:
+   var file = dataURLtoFile(this.imgUrl, 'hello.jpg');
+   console.log(file);
+   this.CLogo1(file);
+  }, 0);
+}
+
+html???????????????????
+<img style="display: none" width="100" height="100" id="preview" src="/assets/defaultLogo.jpg">
+<canvas style="display:none" id="myCanvas"></canvas>

@@ -1,0 +1,2 @@
+https://www.npmjs.com/package/ng2-img-cropper
+https://www.npmjs.com/package/ngx-image-cropper

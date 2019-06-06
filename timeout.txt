@@ -1,0 +1,46 @@
+let exptym:any=localStorage.getItem('expTime');
+  // let exp:any='60';
+  let val=exptym*1000;
+  // alert(val);
+  //by nithesh
+  setTimeout (() => {   
+    
+  
+   
+
+
+    // alert("so early!");
+    if(!this.tokenNotExpired()){
+      // alert("so early in!");
+      this.identityService.getRefreshToken();
+    }
+  }, val);
+  tokenNotExpired() {
+  const token: string = localStorage.getItem('token')
+ // return !this.jwtHelper.isTokenExpired(token);
+  return token != null && !this.jwtHelper.isTokenExpired(token);
+
+ }
+getRefreshToken(){
+    
+    let body=new URLSearchParams();
+    body.append("username", localStorage.getItem('user'));
+    body.append("password", localStorage.getItem('password'));
+    body.append("grant_type", "refresh_token");
+    body.append("client_id", "acme");
+    body.append("client_secret", "acmesecret");
+    body.append("access_token", localStorage.getItem('token'));
+    body.append("refresh_token", localStorage.getItem('rToken'));
+    return this._http.post(this.tokenUrl, body.toString(), this.authOptions).pipe(map((response:Response)=>response.json()))
+    .subscribe(  
+      data=>{
+      this.token=data;
+      localStorage.setItem('token', this.token.access_token);
+      localStorage.setItem('rToken', this.token.refresh_token);
+      localStorage.setItem('expTime', this.token.expires_in);},
+      (err)=>{
+        // alert('Your session timed out!\nPlease Login to continue...');
+         this._router.navigate(['/Login']);
+      }
+    );
+  }

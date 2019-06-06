@@ -1,0 +1,120 @@
+amoghhlgr@gmail.com
+stalingrad43
+Stalingrad43
+pass:mrk@123
+pin:12345
+
+
+
+https://stackoverflow.com/questions/50006833/download-as-pdf-from-a-json-post-response-data-in-angular-4-5
+
+https://medium.com/oril/uploading-files-to-aws-s3-bucket-using-spring-boot-483fcb6f8646
+https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-buckets.html
+region : eu-west-1
+https://tinypng.com/developers:image comprssion
+https://materializecss.com/collapsible.html   for collapsing
+
+
+jump https://walkingtree.tech/upgrading-angular-4-5-projects-to-angular-6/
+
+angular build:ng build --prod
+
+pdfDownload(){
+      html2canvas(document.getElementById('print')).then(function(canvas) {
+  
+        // var w=window.open();
+        // w.document.write("<td style='text-color:black;'></td>";
+          var img = canvas.toDataURL("image/png" ,1);
+          // var doc = new jsPDF('p', 'pt', 'a3');
+          var doc = new jsPDF('p', 'pt', 'a4');
+          doc.setFontSize(1);
+          doc.addImage(img,'PNG', 10, 10,575,550);
+          doc.save('tax-invoice.pdf');
+         // doc.autoPrint()
+      });   
+    }
+<!-- <button (click)="pdfDownload()">Download</button> -->
+npm install jspdf --save
+
+
+
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
+@Injectable({
+providedIn: 'root'
+})
+export class VehicleService {
+
+headers;
+private readonly vehicleEndpoint = 'api/vehicles';
+
+
+constructor(private http: HttpClient) {
+
+}
+
+
+create(vehicle) {
+    return this.http.post(this.vehicleEndpoint, vehicle, this.addHeaders());
+}
+
+addHeaders() {
+    var access_token = localStorage.getItem('access_token');
+    return { headers: new HttpHeaders().set("Authorization", `Bearer   
+${access_token}`) };
+}
+
+
+<pre>{{myForm.value|json}}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class TestingProgression {
+
+    public static void main(String[] args) throws IOException {
+
+        FFmpeg ffmpeg = new FFmpeg("/usr/local/bin/ffmpeg");
+        FFprobe ffprobe = new FFprobe("/usr/local/bin/ffprobe");
+
+        FFmpegExecutor executor = new FFmpegExecutor(ffmpeg, ffprobe);
+
+        FFmpegBuilder command = new FFmpegBuilder()
+                .addInput("http://us-cplus-aka.canal-plus.com/i/1607/14/1173352_140_,200k,400k,800k,1500k,.mp4.csmil/index_3_av.m3u8")
+                .addOutput("/tmp/foo.mp4")
+                    .setAudioCodec("copy")
+                    .setVideoCodec("copy")
+                    .setAudioBitStreamFilter("aac_adtstoasc")
+                .done();
+
+        executor.createJob(command, new ProgressListener() {
+            @Override
+            public void progress(Progress p) {
+                System.out.printf("%f%%", p.progressionRatio()*100 );
+                System.out.println("");
+            }
+        }).run();
+    }
+}  
